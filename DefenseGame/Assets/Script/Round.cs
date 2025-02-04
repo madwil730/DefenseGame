@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Round : MonoBehaviour
 {
-	private int index = 0;  // 인덱스 변수
+	private int index = 50;  // 인덱스 변수
 	public TextMeshProUGUI LifeText;
 
 
@@ -14,8 +14,8 @@ public class Round : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		// 다른 콜라이더가 들어왔을 때 인덱스를 증가
-		index++;
-		LifeText.text = index.ToString();
+		index--;
+		LifeText.text = $"남은 목숨  :  {index}" ;
 		Debug.Log("Collider Entered! Index: " + index);
 	}
 }
