@@ -6,9 +6,10 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
 
-    public int HP;
+    public float HP;
     public float Speed;
     public float Armor;
+    public Color color;
 
 
 }

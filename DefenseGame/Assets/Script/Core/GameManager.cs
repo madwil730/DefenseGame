@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-	public int a = 3;
+	public Round Round;
+	public EnemySpqwnManager EnemySpqwnManager;	
 	protected override void Awake()
 	{
 		base.Awake();

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8567b42886a8fdb4da786097c6d69c23, type: 3}
   m_Name: EnemyDataRound1
   m_EditorClassIdentifier: 
-  HP: 5
+  HP: -105
   Speed: 1
   Armor: 0
+  color: {r: 1, g: 1, b: 1, a: 1}

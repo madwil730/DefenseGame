@@ -5,48 +5,60 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public EnemyData EnemyData;
+    private EnemyData EnemyData;
+
+	[SerializeField]
+	private SpriteRenderer spriteRenderer;
 
 	public Transform[] movePositions; // 이동할 위치 배열
 	private int currentIndex = 1; // 현재 목표 위치 인덱스
-	private Coroutine wnaderCoroutine;
 
 
 	private void OnEnable()
 	{
-		if (wnaderCoroutine == null)
-		{
-			//wnaderCoroutine = StartCoroutine(Wander());
-		}
+		Wander();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		gameObject.SetActive(false);
-		transform.position = movePositions[0].position;
-	}
-
-	public void Init(EnemyData enemyData)
-	{
-		EnemyData = enemyData;
-	}
-
-	IEnumerator Wander()
-	{
-		while (true)
+		if (collision.tag == "Projectile")
 		{
-			Vector3 targetPosition = movePositions[currentIndex].position;
-
-			float distance = Vector3.Distance(transform.position, targetPosition);
-			float duration = distance / EnemyData.Speed;
-
-
-			yield return transform.DOMove(targetPosition, duration).WaitForCompletion();
-
-			// 목표 인덱스를 갱신 (끝까지 갔으면 다시 처음으로)
-			currentIndex = (currentIndex + 1) % movePositions.Length;
-
-
+			Projectile projectile = collision.GetComponent<Projectile>();
+			EnemyData.HP = EnemyData.HP - projectile.Damage;
+			if (EnemyData.HP < 0)
+			{
+				transform.DOKill();
+				transform.position = movePositions[0].position;
+				gameObject.SetActive(false);
+			
+				GameManager.Instance.EnemySpqwnManager.NextSpawnCheck();
+			}
 		}
+	}
+
+	public void Init( EnemyData enemyData)
+	{
+		// 깊은 복사 후 사용
+		EnemyData = new EnemyData
+		{
+			HP = enemyData.HP,
+			color = enemyData.color,
+			Speed = enemyData.Speed
+		}; 
+		spriteRenderer.color = enemyData.color;
+	}
+
+	public void Wander()
+	{
+		Vector3 targetPosition = movePositions[currentIndex].position;
+
+		float distance = Vector3.Distance(transform.position, targetPosition);
+		float duration = distance / EnemyData.Speed;
+
+		transform.DOMove(targetPosition, duration).OnComplete(() =>
+		{
+			currentIndex = (currentIndex + 1) % movePositions.Length;
+			Wander();
+		});
 	}
 }
