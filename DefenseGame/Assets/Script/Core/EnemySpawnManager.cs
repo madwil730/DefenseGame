@@ -54,8 +54,6 @@ public class EnemySpqwnManager : MonoBehaviour
         {
 
 			GameManager.Instance.Round.RoundCount++;
-            Debug.Log(GameManager.Instance.Round.RoundCount);
-            Debug.Log(enemyDatas.Count);
             if(enemyDatas.Count > GameManager.Instance.Round.RoundCount)
             {
                 LastEnemyGo = false;
