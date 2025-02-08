@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class TowerBuilding : MonoBehaviour
 {
-	public Button NormalTower;
+    public Image Image;
 
-   public enum TowerKind
+    [SerializeField]
+	private BaseUpgrade baseUpgrade;
+	[SerializeField]
+	private NormalUpgrade normalUpgrade;
+
+	public enum TowerKind
     {
         Base,
         NormalTower,
         FireTower,
-        TowerNull
     }
 
     public TowerKind Kind = TowerKind.Base;  
@@ -21,11 +25,15 @@ public class TowerBuilding : MonoBehaviour
     {
         switch (Kind)
         {
-            case TowerKind.NormalTower:
-				NormalTower.gameObject.SetActive(true);
-				break;  
+            case TowerKind.Base:
+                baseUpgrade.Init(this);
+				break;
 
-            default:
+			case TowerKind.NormalTower:
+				normalUpgrade.Init(this);   
+				break;
+
+			default:
                 break;
         
         }
