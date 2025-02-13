@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		Wander();
+		//Wander();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -42,10 +42,28 @@ public class EnemyController : MonoBehaviour
 		EnemyData = new EnemyData
 		{
 			HP = enemyData.HP,
-			color = enemyData.color,
+			sprite = enemyData.sprite,
 			Speed = enemyData.Speed
 		}; 
-		spriteRenderer.color = enemyData.color;
+		spriteRenderer.sprite = enemyData.sprite;
+	}
+
+	private void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+			EnemyData.Speed = 5;
+		}
+
+		if (movePositions.Length == 0) return;
+
+		Vector3 targetPosition = movePositions[currentIndex].position;
+		transform.position = Vector3.MoveTowards(transform.position, targetPosition, EnemyData.Speed * Time.deltaTime);
+
+		if (Vector3.Distance(transform.position, targetPosition) < 0.01f) // 목표 위치에 도착하면 다음 위치로 변경
+		{
+			currentIndex = (currentIndex + 1) % movePositions.Length;
+		}
 	}
 
 	public void Wander()

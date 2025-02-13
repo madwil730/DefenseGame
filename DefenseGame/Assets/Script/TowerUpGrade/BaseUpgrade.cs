@@ -10,7 +10,7 @@ public class BaseUpgrade : UpgradeManager
 
 	public override void ChangeImage(Sprite sprite)
 	{
-		towerBuilding.Image.sprite = sprite;
+		towerBuilding.TowerImage.sprite = sprite;
 		towerBuilding.Kind = TowerBuilding.TowerKind.NormalTower;
 		towerBuilding.Init();
 	}

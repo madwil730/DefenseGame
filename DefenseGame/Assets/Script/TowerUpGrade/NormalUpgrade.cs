@@ -24,8 +24,8 @@ public class NormalUpgrade : UpgradeManager
 		TowerDesc.text = "기본적인 비둘기";
 	}
 
-	public void AudateAttack()
+	public void UpdateAttack()
 	{
-
+		towerBuilding.NormalTower.Damage += 3;
 	}
 }

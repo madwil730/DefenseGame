@@ -9,7 +9,7 @@ public class EnemyData : ScriptableObject
     public float HP;
     public float Speed;
     public float Armor;
-    public Color color;
+    public Sprite sprite;
 
 
 }

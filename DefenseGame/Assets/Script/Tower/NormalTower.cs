@@ -5,11 +5,14 @@ using UnityEngine;
 public class NormalTower : Tower
 {
 
+	Projectile projectile;
+
 	protected override void FireProjectile(Transform target)
     {
 		if (target == null) return;
 
-		GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+		projectile = Instantiate(projectilePrefab , firePoint.position, Quaternion.identity).GetComponent<Projectile>();
+		Init(projectile);
 		Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 		if (rb != null)
 		{
@@ -17,6 +20,13 @@ public class NormalTower : Tower
 			rb.velocity = direction * projectileSpeed;
 		}
 	}
+
+	public void Init(Projectile projectile)
+	{
+		projectile.Damage = Damage;
+
+	}
+
 
 
 }

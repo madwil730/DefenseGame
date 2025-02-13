@@ -8,6 +8,7 @@ public abstract class Tower : MonoBehaviour
 	public Transform firePoint; // 발사 위치
 	public float fireRate = 1f; // 초당 발사 속도
 	public float projectileSpeed = 5f; // 발사체 속도
+	public float Damage = 5;
 
 	private List<Transform> enemiesInRange = new List<Transform>(); // 범위 내 적 리스트
 	private Coroutine shootingCoroutine;
@@ -50,4 +51,16 @@ public abstract class Tower : MonoBehaviour
 		shootingCoroutine = null;
 	}
 	protected abstract void FireProjectile(Transform target);
+
+	protected void UpdatgeFireRate(float point)
+	{
+		fireRate += point;
+	}
+
+	protected void UpdatgeProjectileSpeed(float point)
+	{
+		projectileSpeed += point;
+	}
+
+
 }
