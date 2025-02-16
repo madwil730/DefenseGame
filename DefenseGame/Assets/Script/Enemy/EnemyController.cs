@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour
 			Speed = enemyData.Speed
 		}; 
 		spriteRenderer.sprite = enemyData.sprite;
+		currentIndex = 1;
 	}
 
 	private void Update()
