@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8567b42886a8fdb4da786097c6d69c23, type: 3}
   m_Name: EnemyDataRound7
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 27
   Speed: 1
-  Armor: 0
-  sprite: {fileID: 21300000, guid: 0a6197f4809a36549b8636a9ab2cf5ac, type: 3}
+  Armor: 4
+  sprite: {fileID: 21300000, guid: 2d79b4dad35c4e9468441efe3f488efa, type: 3}
