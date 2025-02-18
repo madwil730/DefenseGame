@@ -16,7 +16,9 @@ public class TowerBuilding : MonoBehaviour
     {
         Base,
         NormalTower,
-        FireTower,
+        DefenceDown,
+        SpeedDown,
+        InCome
     }
 
     public TowerKind Kind = TowerKind.Base;  

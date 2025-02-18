@@ -4,16 +4,34 @@ using UnityEngine;
 
 public class BaseUpgrade : UpgradeManager
 {
-	[SerializeField]
-	private GameObject normalTowerBtn;
 
 
 	public override void ChangeImage(Sprite sprite)
 	{
 		towerBuilding.TowerImage.sprite = sprite;
-		towerBuilding.Kind = TowerBuilding.TowerKind.NormalTower;
 		towerBuilding.Init();
 	}
+
+	public void ChangeNormalKind()
+	{
+		towerBuilding.Kind = TowerBuilding.TowerKind.NormalTower;
+	}
+
+	public void ChangeDefenseDownKind()
+	{
+		towerBuilding.Kind = TowerBuilding.TowerKind.DefenceDown;
+	}
+
+	public void ChangeSpeedDownKind()
+	{
+		towerBuilding.Kind = TowerBuilding.TowerKind.SpeedDown;
+	}
+
+	public void ChangeInComeKind()
+	{
+		towerBuilding.Kind = TowerBuilding.TowerKind.InCome;
+	}
+
 
 	public override void Init(TowerBuilding towerBuilding)
 	{
