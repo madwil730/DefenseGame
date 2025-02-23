@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class InComeUpgrade : UpgradeManager
 {
-	[SerializeField]
-	private GameObject temp;
-
 	public override void ChangeImage(Sprite sprite)
 	{
 		throw new System.NotImplementedException();
@@ -18,13 +15,13 @@ public class InComeUpgrade : UpgradeManager
 		this.towerBuilding = towerBuilding;
 		gameObject.SetActive(true);
 
-
-		TowerDescTitle.text = " 노말 타원";
-		TowerDesc.text = "기본적인 비둘기";
+		TowerImage.sprite = Sprite;
+		TowerDescTitle.text = "수입 타원";
+		TowerDesc.text = "반짝이는 물건을 모아 수입을 늘린다, 공격력은 없다";
 	}
 
-	public void UpdateAttack()
+	public void UpdateInCome()
 	{
-		towerBuilding.NormalTower.Damage += 3;
+		towerBuilding.InComeTower.InCome += 1;
 	}
 }

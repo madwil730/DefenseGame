@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenseDownTower : UpgradeManager
+public class DefenseDownTower : Tower
 {
-	[SerializeField]
-	private GameObject temp;
+	private Projectile projectile;
+	[HideInInspector]
+	public float DefenceDamage;
 
-	public override void ChangeImage(Sprite sprite)
+	protected override void FireProjectile(Transform target)
 	{
-		throw new System.NotImplementedException();
+		if (target == null) return;
+
+		projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity).GetComponent<Projectile>();
+		Init(projectile);
+		Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+		if (rb != null)
+		{
+			Vector2 direction = (target.position - firePoint.position).normalized;
+			rb.velocity = direction * projectileSpeed;
+		}
 	}
 
-
-	public override void Init(TowerBuilding towerBuilding)
+	public void Init(Projectile projectile)
 	{
-		this.towerBuilding = towerBuilding;
-		gameObject.SetActive(true);
-
-
-		TowerDescTitle.text = " 방어력 관통 타워";
-		TowerDesc.text = "날카로운 부리로 상대방의 방어막을 부셔버린다";
-	}
-
-	public void UpdateAttack()
-	{
-		towerBuilding.NormalTower.Damage += 3;
+		projectile.Damage = Damage;
+		projectile.DefenceDamage = DefenceDamage;
 	}
 }

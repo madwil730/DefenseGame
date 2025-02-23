@@ -9,6 +9,7 @@ public abstract class Tower : MonoBehaviour
 	public float fireRate = 1f; // 초당 발사 속도
 	public float projectileSpeed = 5f; // 발사체 속도
 	public float Damage = 5;
+	public Collider2D Range;
 
 	private List<Transform> enemiesInRange = new List<Transform>(); // 범위 내 적 리스트
 	private Coroutine shootingCoroutine;

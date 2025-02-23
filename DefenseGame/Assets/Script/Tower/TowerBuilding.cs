@@ -7,10 +7,20 @@ public class TowerBuilding : MonoBehaviour
 {
     public Image TowerImage;
     public NormalTower NormalTower;
+    public SpeedDownTower SpeedDownTower;
+    public DefenseDownTower DefenseDownTower;
+    public InComeTower InComeTower;
+
     [SerializeField]
 	private BaseUpgrade baseUpgrade;
 	[SerializeField]
 	private NormalUpgrade normalUpgrade;
+	[SerializeField]
+	private DefenseDownUpgrade defenseDownUpgrade;
+	[SerializeField]
+	private SpeedDownUpgrade speedDownUpgrade;
+	[SerializeField]
+	private InComeUpgrade inComeUpgrade;
 
 	public enum TowerKind
     {
@@ -35,6 +45,24 @@ public class TowerBuilding : MonoBehaviour
 			case TowerKind.NormalTower:
 				NormalTower.gameObject.SetActive(true);    
 				normalUpgrade.Init(this);
+				ActiveOff(normalUpgrade);
+				break;
+
+			case TowerKind.SpeedDown:
+				SpeedDownTower.gameObject.SetActive(true);
+				speedDownUpgrade.Init(this);
+				ActiveOff(normalUpgrade);
+				break;
+
+			case TowerKind.DefenceDown:
+				DefenseDownTower.gameObject.SetActive(true);
+				defenseDownUpgrade.Init(this);
+				ActiveOff(normalUpgrade);
+				break;
+
+			case TowerKind.InCome:
+				InComeTower.gameObject.SetActive(true);
+				inComeUpgrade.Init(this);
 				ActiveOff(normalUpgrade);
 				break;
 

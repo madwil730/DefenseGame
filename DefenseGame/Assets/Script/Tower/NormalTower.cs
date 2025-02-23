@@ -5,7 +5,7 @@ using UnityEngine;
 public class NormalTower : Tower
 {
 
-	Projectile projectile;
+	private Projectile projectile;
 
 	protected override void FireProjectile(Transform target)
     {
@@ -24,7 +24,6 @@ public class NormalTower : Tower
 	public void Init(Projectile projectile)
 	{
 		projectile.Damage = Damage;
-
 	}
 
 

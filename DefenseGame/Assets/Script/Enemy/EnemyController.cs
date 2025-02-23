@@ -24,13 +24,61 @@ public class EnemyController : MonoBehaviour
 		if (collision.tag == "Projectile")
 		{
 			Projectile projectile = collision.GetComponent<Projectile>();
+			projectile.Damage -= EnemyData.Armor;
+
+			if (projectile.Damage <= 1)
+				projectile.Damage = 1;
+
 			EnemyData.HP = EnemyData.HP - projectile.Damage;
 			if (EnemyData.HP < 0)
 			{
-				transform.DOKill();
 				transform.position = movePositions[0].position;
 				gameObject.SetActive(false);
 			
+				GameManager.Instance.EnemySpqwnManager.NextSpawnCheck();
+			}
+		}
+		else if (collision.tag == "DefenceDown")
+		{
+			Projectile projectile = collision.GetComponent<Projectile>();
+
+
+			EnemyData.Armor = EnemyData.Armor - projectile.DefenceDamage;
+
+			projectile.Damage -= EnemyData.Armor;
+
+			if (projectile.Damage <= 1)
+				projectile.Damage = 1;
+			EnemyData.HP = EnemyData.HP  - projectile.Damage;
+			if (EnemyData.HP < 0)
+			{
+				transform.position = movePositions[0].position;
+				gameObject.SetActive(false);
+
+				GameManager.Instance.EnemySpqwnManager.NextSpawnCheck();
+			}
+		}
+		else if (collision.tag == "SpeedDown")
+		{
+			Projectile projectile = collision.GetComponent<Projectile>();
+
+			projectile.Damage -= EnemyData.Armor;
+
+			if (projectile.Damage <= 1)
+				projectile.Damage = 1;
+
+			EnemyData.HP = EnemyData.HP - projectile.Damage;
+
+			
+			EnemyData.Speed = EnemyData.Speed - projectile.SpeedDamage;
+			if (EnemyData.Speed <= 0)
+				EnemyData.Speed = 0.1f;
+
+			if (EnemyData.HP < 0)
+			{
+				transform.position = movePositions[0].position;
+				gameObject.SetActive(false);
+
 				GameManager.Instance.EnemySpqwnManager.NextSpawnCheck();
 			}
 		}
