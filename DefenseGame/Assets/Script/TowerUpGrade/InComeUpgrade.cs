@@ -22,6 +22,10 @@ public class InComeUpgrade : UpgradeManager
 
 	public void UpdateInCome()
 	{
-		towerBuilding.InComeTower.InCome += 1;
+		if (GameManager.Instance.money >= 30)
+		{
+			GameManager.Instance.money -= 30;
+			towerBuilding.InComeTower.InCome += 1;
+		}
 	}
 }

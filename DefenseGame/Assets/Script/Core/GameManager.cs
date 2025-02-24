@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,7 +13,12 @@ public class GameManager : Singleton<GameManager>
 	public GameObject upgradeTemp;
 	[HideInInspector]
 	public int money = 100;
-	private float timer = 0f; 
+	private float timer = 0f;
+
+	[SerializeField]
+	public GameObject claer;
+	[SerializeField]
+	public GameObject fail;
 
 	public TextMeshProUGUI MoneyUI;
 
@@ -33,5 +39,15 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		MoneyUI.text = $"µ· :  {money}";
+	}
+
+	public void Quit()
+	{
+		Application.Quit();	
+	}
+
+	public void LoadScene(string str)
+	{
+		SceneManager.LoadScene(str);
 	}
 }

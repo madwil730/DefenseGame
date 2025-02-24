@@ -16,6 +16,9 @@ public class Round : MonoBehaviour
 	{
 		if(other.tag == "Enemy")
 		{
+
+			if(index <=0)
+				GameManager.Instance.fail.SetActive(true);	
 			// 다른 콜라이더가 들어왔을 때 인덱스를 증가
 			index--;
 			LifeText.text = $"남은 목숨  :  {index}";

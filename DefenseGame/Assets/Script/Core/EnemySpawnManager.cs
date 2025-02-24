@@ -54,13 +54,16 @@ public class EnemySpqwnManager : MonoBehaviour
         {
 
 			GameManager.Instance.Round.RoundCount++;
-            if(enemyDatas.Count > GameManager.Instance.Round.RoundCount)
+            if (enemyDatas.Count > GameManager.Instance.Round.RoundCount)
             {
                 LastEnemyGo = false;
-
-			    StartCoroutine(Spawn());
-
+                StartCoroutine(Spawn());
             }
+            else
+            {
+                GameManager.Instance.claer.SetActive(true);    
+
+			}
         }
 
 	}

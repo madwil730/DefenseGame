@@ -22,21 +22,40 @@ public class SpeedDownUpgrade : UpgradeManager
 
 	public void UpdateAttack()
 	{
-		towerBuilding.SpeedDownTower.Damage += 3;
+		if (GameManager.Instance.money >= 20)
+		{
+			GameManager.Instance.money -= 20;
+			towerBuilding.SpeedDownTower.Damage += 3;
+		}
+
 	}
 
 	public void UpdateRange()
 	{
-		towerBuilding.SpeedDownTower.firePoint.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+		if (GameManager.Instance.money >= 10)
+		{
+			GameManager.Instance.money -= 10;
+			towerBuilding.SpeedDownTower.firePoint.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+
+		}
 	}
 
 	public void UpdateSpeed()
 	{
-		towerBuilding.SpeedDownTower.projectileSpeed += 0.5f;
+		if (GameManager.Instance.money >= 15)
+		{
+			GameManager.Instance.money -= 15;
+			towerBuilding.SpeedDownTower.projectileSpeed += 0.5f;
+
+		}
 	}
 
 	public void UpdateProperty()
 	{
-		towerBuilding.SpeedDownTower.SpeedDamage += 0.5f;
+		if (GameManager.Instance.money >= 20)
+		{
+			GameManager.Instance.money -= 20;
+			towerBuilding.SpeedDownTower.SpeedDamage += 0.5f;
+		}
 	}
 }

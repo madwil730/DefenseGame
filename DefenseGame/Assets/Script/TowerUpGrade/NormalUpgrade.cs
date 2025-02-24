@@ -22,16 +22,29 @@ public class NormalUpgrade : UpgradeManager
 
 	public void UpdateAttack()
 	{
-		towerBuilding.NormalTower.Damage += 3;
+		if (GameManager.Instance.money >= 20)
+		{
+			GameManager.Instance.money -= 20;
+			towerBuilding.NormalTower.Damage += 3;
+		}
 	}
 
 	public void UpdateRange()
 	{
-		towerBuilding.NormalTower.firePoint.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+		if (GameManager.Instance.money >= 10)
+		{
+			GameManager.Instance.money -= 10;
+			towerBuilding.NormalTower.firePoint.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+		}
 	}
 
 	public void UpdateSpeed()
 	{
-		towerBuilding.NormalTower.projectileSpeed += 0.5f;
+		if (GameManager.Instance.money >= 15)
+		{
+			GameManager.Instance.money -= 15;
+			towerBuilding.NormalTower.projectileSpeed += 0.5f;
+
+		}
 	}
 }

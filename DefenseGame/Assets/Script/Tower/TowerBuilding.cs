@@ -51,19 +51,19 @@ public class TowerBuilding : MonoBehaviour
 			case TowerKind.SpeedDown:
 				SpeedDownTower.gameObject.SetActive(true);
 				speedDownUpgrade.Init(this);
-				ActiveOff(normalUpgrade);
+				ActiveOff(speedDownUpgrade);
 				break;
 
 			case TowerKind.DefenceDown:
 				DefenseDownTower.gameObject.SetActive(true);
 				defenseDownUpgrade.Init(this);
-				ActiveOff(normalUpgrade);
+				ActiveOff(defenseDownUpgrade);
 				break;
 
 			case TowerKind.InCome:
 				InComeTower.gameObject.SetActive(true);
 				inComeUpgrade.Init(this);
-				ActiveOff(normalUpgrade);
+				ActiveOff(inComeUpgrade);
 				break;
 
 			default:

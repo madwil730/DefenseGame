@@ -4,32 +4,63 @@ using UnityEngine;
 
 public class BaseUpgrade : UpgradeManager
 {
-
+	private bool buildingOk;
 
 	public override void ChangeImage(Sprite sprite)
 	{
-		towerBuilding.TowerImage.sprite = sprite;
-		towerBuilding.Init();
+		if(buildingOk)
+		{
+			towerBuilding.TowerImage.sprite = sprite;
+			towerBuilding.Init();
+		}
+	
 	}
 
 	public void ChangeNormalKind()
 	{
-		towerBuilding.Kind = TowerBuilding.TowerKind.NormalTower;
+		if(GameManager.Instance.money >= 30)
+		{
+			towerBuilding.Kind = TowerBuilding.TowerKind.NormalTower;
+			towerBuilding.NormalTower.gameObject.SetActive(true);
+			buildingOk = true;
+			GameManager.Instance.money -= 30;
+		}
 	}
 
 	public void ChangeDefenseDownKind()
 	{
-		towerBuilding.Kind = TowerBuilding.TowerKind.DefenceDown;
+		if (GameManager.Instance.money >= 35)
+		{
+			buildingOk = true;
+			GameManager.Instance.money -= 35;
+			towerBuilding.Kind = TowerBuilding.TowerKind.DefenceDown;
+			towerBuilding.DefenseDownTower.gameObject.SetActive(true);
+		}
+			
 	}
 
 	public void ChangeSpeedDownKind()
 	{
-		towerBuilding.Kind = TowerBuilding.TowerKind.SpeedDown;
+		if (GameManager.Instance.money >= 40)
+		{
+			towerBuilding.Kind = TowerBuilding.TowerKind.SpeedDown;
+			towerBuilding.SpeedDownTower.gameObject.SetActive(true);
+			buildingOk = true;
+			GameManager.Instance.money -= 40;
+		}
+
+		
 	}
 
 	public void ChangeInComeKind()
 	{
-		towerBuilding.Kind = TowerBuilding.TowerKind.InCome;
+		if (GameManager.Instance.money >= 50)
+		{
+			buildingOk = true;
+			GameManager.Instance.money -= 50;
+			towerBuilding.Kind = TowerBuilding.TowerKind.InCome;
+			towerBuilding.InComeTower.gameObject.SetActive(true);
+		}
 	}
 
 
@@ -46,6 +77,11 @@ public class BaseUpgrade : UpgradeManager
 
 	public void FalseActiveSelf()
 	{
-		gameObject.SetActive(false);
+		if(buildingOk)
+		{
+			buildingOk = false;
+			gameObject.SetActive(false);
+
+		}
 	}
 }

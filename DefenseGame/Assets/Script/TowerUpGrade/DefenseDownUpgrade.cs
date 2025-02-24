@@ -22,22 +22,38 @@ public class DefenseDownUpgrade : UpgradeManager
 
 	public void UpdateAttack()
 	{
-		towerBuilding.DefenseDownTower.Damage += 3;
+		if (GameManager.Instance.money >= 20)
+		{
+			GameManager.Instance.money -= 20;
+			towerBuilding.DefenseDownTower.Damage += 3;
+		}
 	}
 
 	public void UpdateRange()
 	{
-		towerBuilding.DefenseDownTower.firePoint.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+		if (GameManager.Instance.money >= 10)
+		{
+			GameManager.Instance.money -= 10;
+			towerBuilding.DefenseDownTower.firePoint.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+		}
 	}
 
 	public void UpdateSpeed()
 	{
-		towerBuilding.DefenseDownTower.projectileSpeed += 0.5f;
+		if (GameManager.Instance.money >= 15)
+		{
+			GameManager.Instance.money -= 15;
+			towerBuilding.DefenseDownTower.projectileSpeed += 0.5f;
+		}
 	}
 
 	public void UpdateProperty()
 	{
-		towerBuilding.DefenseDownTower.DefenceDamage += 1;
+		if (GameManager.Instance.money >= 20)
+		{
+			GameManager.Instance.money -= 20;
+			towerBuilding.DefenseDownTower.DefenceDamage += 1;
+		}
 	}
 
 
